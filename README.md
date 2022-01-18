@@ -20,4 +20,4 @@
 
 ## Mockup Image
 
-![Password Generator Mockup]()
+![Password Generator Mockup](https://github.com/gemsjohn/password-generator/blob/main/Develop/mockup/password-generator-mockup.png)
