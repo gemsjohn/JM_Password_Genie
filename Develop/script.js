@@ -8,9 +8,7 @@ function generatePassword() {
   caseToggle();
   numericToggle();
   specialCharactersToggle();
-  //validator();
-  //console.log(passwordArray);
-  //console.log(validatorArray);
+  validator();
   console.log(randomPassword(passwordArray.length));
 };
 
@@ -76,7 +74,7 @@ function specialCharactersToggle() {
   }
 };
 function validator() {
-  var sum = 0;
+  // var sum = 0;
 
   if (passwordArray.length >= 8 && passwordArray.length <= 128) {
     validatorArray[0] = 1;
@@ -99,38 +97,87 @@ function validator() {
     validatorArray[3] = 0;
   }
 
-  for (var i = 0; i < 4; i++) {
-    sum += validatorArray[i];
-  }
-  if (sum === 0) {
-    generatePassword();
-  }
-  console.log("Number of characteristics: " + sum);
+  
+
+  // for (var i = 0; i < 4; i++) {
+  //   sum += validatorArray[i];
+  // }
+  // if (sum === 0) {
+  //   generatePassword();
+  // }
+  // console.log("Number of characteristics: " + sum);
 };
 function randomPassword(length) {
   var result = "";
   var charLength = characters.length;
   var specCharLength = specialCharacters.length;
-  
-   for (var i = 0; i < length; i++) {
-    if (Math.random() <= 1 && Math.random() >= 0.66) {
+
+  if (validatorArray[0] && validatorArray[1] && validatorArray[2] && validatorArray[3]){
+    passwordArray.condition = 1;
+    console.log("condition 1");
+  } else if (validatorArray[0] && validatorArray[1] && validatorArray[2] && !validatorArray[3]) {
+    passwordArray.condition = 2;
+    console.log("condition 2");
+  } else if (validatorArray[0] && validatorArray[1] && !validatorArray[2] && validatorArray[3]) {
+    passwordArray.condition = 3;
+    console.log("condition 3");
+  } else if (validatorArray[0] && validatorArray[1] && !validatorArray[2] && !validatorArray[3]) {
+    passwordArray.condition = 4;
+    console.log("condition 4");
+  }
+
+  for (var i = 0; i < length; i++) {
+    if (passwordArray.condition == 1) {
+      if (Math.random() <= 1 && Math.random() >= 0.66) {
+        if (passwordArray.case == 'lowercase') {
+          result += characters.toLowerCase().charAt(Math.floor(Math.random() * charLength));
+        } else if (passwordArray.case == 'uppercase') {
+          result += characters.toUpperCase().charAt(Math.floor(Math.random() * charLength));
+        }
+      } else if (Math.random() < 0.66 && Math.random() >= 0.33) {
+        if (passwordArray.numeric == 'yes'){
+          result += Math.floor(Math.random() * 9);
+        }
+      } else {
+        if (passwordArray.special == 'yes') {
+          result += specialCharacters.charAt(Math.floor(Math.random() * specCharLength));
+        }
+      }
+    } 
+    else if (passwordArray.condition == 2) {
+      if (Math.random() >= 0.5) {
+        if (passwordArray.case == 'lowercase') {
+          result += characters.toLowerCase().charAt(Math.floor(Math.random() * charLength));
+        } else if (passwordArray.case == 'uppercase') {
+          result += characters.toUpperCase().charAt(Math.floor(Math.random() * charLength));
+        }
+      } else {
+        if (passwordArray.numeric == 'yes'){
+          result += Math.floor(Math.random() * 9);
+        }
+      }
+    }
+    else if (passwordArray.condition == 3) {
+      if (Math.random() >= 0.5) {
+        if (passwordArray.case == 'lowercase') {
+          result += characters.toLowerCase().charAt(Math.floor(Math.random() * charLength));
+        } else if (passwordArray.case == 'uppercase') {
+          result += characters.toUpperCase().charAt(Math.floor(Math.random() * charLength));
+        }
+      } else {
+        if (passwordArray.special == 'yes'){
+          result += specialCharacters.charAt(Math.floor(Math.random() * specCharLength));
+        }
+      }
+    } 
+    else if (passwordArray.condition == 4) {
       if (passwordArray.case == 'lowercase') {
         result += characters.toLowerCase().charAt(Math.floor(Math.random() * charLength));
       } else if (passwordArray.case == 'uppercase') {
         result += characters.toUpperCase().charAt(Math.floor(Math.random() * charLength));
       }
-    } else if (Math.random() < 0.66 && Math.random() >= 0.33) {
-      if (passwordArray.numeric == 'yes'){
-        result += Math.floor(Math.random() * 9);
-      }
-    } else {
-      if (passwordArray.special == 'yes') {
-        result += specialCharacters.charAt(Math.floor(Math.random() * specCharLength));
-      }
-      
     }
-   }
-
+  }
    return result;
 };
 
@@ -138,7 +185,8 @@ var passwordArray = {
     length: null,
     case: null,
     numeric: null,
-    special: null
+    special: null,
+    condition: null
 };
 var validatorArray = [0, 0, 0, 0];
 
