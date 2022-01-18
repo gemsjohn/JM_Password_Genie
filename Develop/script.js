@@ -19,7 +19,6 @@ function passLength() {
     window.alert("Please provide a number between 8 and 128.");
     passLength();
   } else if (passwordLength >= 8 && passwordLength <= 128) {
-    // alert("Your password length has been set to " + passwordLength + ".");
     console.log(passwordLength);
     passwordArray.length = passwordLength;
     
@@ -27,14 +26,12 @@ function passLength() {
     window.alert("Please provide a number between 8 and 128.");
     passLength();
   }
-  // return passwordLength;
 };
 
 function caseToggle() {
   var chooseCase = window.prompt("Do you want to use lowercase or uppercase? Enter 'lowercase' or 'uppercase'.");
   chooseCase = chooseCase.toLowerCase();
   if (chooseCase == 'lowercase') {
-    // alert("You have chosen to use" + chooseCase + ".");
     console.log("lowercase");
     passwordArray.case = chooseCase;
   } else if (chooseCase == 'uppercase') {
@@ -74,7 +71,6 @@ function specialCharactersToggle() {
   }
 };
 function validator() {
-  // var sum = 0;
 
   if (passwordArray.length >= 8 && passwordArray.length <= 128) {
     validatorArray[0] = 1;
@@ -96,17 +92,8 @@ function validator() {
   } else {
     validatorArray[3] = 0;
   }
-
-  
-
-  // for (var i = 0; i < 4; i++) {
-  //   sum += validatorArray[i];
-  // }
-  // if (sum === 0) {
-  //   generatePassword();
-  // }
-  // console.log("Number of characteristics: " + sum);
 };
+
 function randomPassword(length) {
   var result = "";
   var charLength = characters.length;
@@ -188,6 +175,7 @@ var passwordArray = {
     special: null,
     condition: null
 };
+
 var validatorArray = [0, 0, 0, 0];
 
 
