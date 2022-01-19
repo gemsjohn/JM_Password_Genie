@@ -13,7 +13,7 @@ function generatePassword() {
   numericToggle();
   specialCharactersToggle();
   validator();
-  console.log(randomPassword(passwordArray.length));
+  // console.log(randomPassword(passwordArray.length));
 };
 
 // This function restricts the user to select
@@ -241,7 +241,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  // var password = generatePassword();
+  generatePassword();
   var passwordText = document.querySelector("#password");
   var finalPassword = randomPassword(passwordArray.length);
   window.alert(finalPassword);
