@@ -243,13 +243,9 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-  window.alert(randomPassword(passwordArray.length));
-  // document.getElementById("password").innerHTML = randomPassword(passwordArray.length);
-
-  
-
+  var finalPassword = randomPassword(passwordArray.length);
+  window.alert(finalPassword);
+  passwordText.textContent = finalPassword;
 };
 
 // Add event listener to generate button
