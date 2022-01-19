@@ -48,7 +48,7 @@ function caseToggle() {
     passwordArray.case = chooseCase;
   } else {
     window.alert("Please enter either 'lowercase' or 'uppercase'.");
-    return caseToggle();
+    caseToggle();
   }
 };
 
@@ -65,7 +65,7 @@ function numericToggle() {
     passwordArray.numeric = numericOnOff;
   } else {
     window.alert("Please enter either 'yes' or 'no'.");
-    return numericToggle();
+    numericToggle();
   }
 };
 
@@ -82,7 +82,7 @@ function specialCharactersToggle() {
     passwordArray.special = specialCharOnOff;
   } else {
     window.alert("Please enter either 'yes' or 'no'.");
-    return specialCharactersToggle();
+    specialCharactersToggle();
   }
 };
 
