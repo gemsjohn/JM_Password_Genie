@@ -39,6 +39,14 @@ function passLength() {
 // password letters with comply.
 function caseToggle() {
   var chooseCase = window.prompt("Do you want to use lowercase or uppercase? Enter 'lowercase' or 'uppercase'.");
+  // Selecting 'Cancel' on the window.promp returns null.
+  // You cannot apply null to 'toLowerCase' so we use the following 
+  // if statement to handle this bug.
+  if (chooseCase === null || chooseCase === "") {
+    window.alert("Please enter either 'lowercase' or 'uppercase'.");
+    caseToggle();
+    return;
+  }
   chooseCase = chooseCase.toLowerCase();
   if (chooseCase == 'lowercase') {
     // console.log("lowercase");
@@ -46,7 +54,10 @@ function caseToggle() {
   } else if (chooseCase == 'uppercase') {
     // console.log("uppercase");
     passwordArray.case = chooseCase;
-  } else {
+  } else if (chooseCase = null) {
+    window.alert("Please enter either 'lowercase' or 'uppercase'.")
+  }
+  else {
     window.alert("Please enter either 'lowercase' or 'uppercase'.");
     caseToggle();
   }
@@ -56,6 +67,14 @@ function caseToggle() {
 // on or off.
 function numericToggle() {
   var numericOnOff = window.prompt("Would you like to use numbers in your password? Please enter 'yes' or 'no'.");
+  // Selecting 'Cancel' on the window.promp returns null.
+  // You cannot apply null to 'toLowerCase' so we use the following 
+  // if statement to handle this bug.
+  if (numericOnOff === null || numericOnOff === "") {
+    window.alert("Please enter either 'yes' or 'no'.");
+    numericToggle();
+    return;
+  }
   numericOnOff = numericOnOff.toLowerCase();
   if (numericOnOff == 'yes') {
     // console.log("numeric on");
@@ -73,6 +92,14 @@ function numericToggle() {
 // on or off.
 function specialCharactersToggle() {
   var specialCharOnOff = window.prompt("Would you like to use special characters in your password? Please enter 'yes' or 'no'.")
+  // Selecting 'Cancel' on the window.promp returns null.
+  // You cannot apply null to 'toLowerCase' so we use the following 
+  // if statement to handle this bug.
+  if (specialCharOnOff === null || specialCharOnOff === "") {
+    window.alert("Please enter either 'yes' or 'no'.");
+    specialCharactersToggle();
+    return;
+  }
   specialCharOnOff = specialCharOnOff.toLowerCase();
   if (specialCharOnOff == 'yes') {
     // console.log("special characters on");
