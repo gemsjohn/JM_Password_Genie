@@ -13,7 +13,6 @@ function generatePassword() {
   numericToggle();
   specialCharactersToggle();
   validator();
-  // console.log(randomPassword(passwordArray.length));
 };
 
 // This function restricts the user to select
@@ -49,10 +48,8 @@ function caseToggle() {
   }
   chooseCase = chooseCase.toLowerCase();
   if (chooseCase == 'lowercase') {
-    // console.log("lowercase");
     passwordArray.case = chooseCase;
   } else if (chooseCase == 'uppercase') {
-    // console.log("uppercase");
     passwordArray.case = chooseCase;
   } else if (chooseCase = null) {
     window.alert("Please enter either 'lowercase' or 'uppercase'.")
@@ -77,10 +74,8 @@ function numericToggle() {
   }
   numericOnOff = numericOnOff.toLowerCase();
   if (numericOnOff == 'yes') {
-    // console.log("numeric on");
     passwordArray.numeric = numericOnOff;
   } else if (numericOnOff == 'no') {
-    // console.log("numeric off");
     passwordArray.numeric = numericOnOff;
   } else {
     window.alert("Please enter either 'yes' or 'no'.");
@@ -102,10 +97,8 @@ function specialCharactersToggle() {
   }
   specialCharOnOff = specialCharOnOff.toLowerCase();
   if (specialCharOnOff == 'yes') {
-    // console.log("special characters on");
     passwordArray.special = specialCharOnOff;
   } else if (specialCharOnOff == 'no') {
-    // console.log("special characters off");
     passwordArray.special = specialCharOnOff;
   } else {
     window.alert("Please enter either 'yes' or 'no'.");
@@ -153,16 +146,12 @@ function randomPassword(length) {
 
   if (validatorArray[0] && validatorArray[1] && validatorArray[2] && validatorArray[3]){
     passwordArray.condition = 1;
-    // console.log("condition 1");
   } else if (validatorArray[0] && validatorArray[1] && validatorArray[2] && !validatorArray[3]) {
     passwordArray.condition = 2;
-    // console.log("condition 2");
   } else if (validatorArray[0] && validatorArray[1] && !validatorArray[2] && validatorArray[3]) {
     passwordArray.condition = 3;
-    // console.log("condition 3");
   } else if (validatorArray[0] && validatorArray[1] && !validatorArray[2] && !validatorArray[3]) {
     passwordArray.condition = 4;
-    // console.log("condition 4");
   }
 
   for (var i = 0; i < length; i++) {
@@ -241,7 +230,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  // var password = generatePassword();
   generatePassword();
   var passwordText = document.querySelector("#password");
   var finalPassword = randomPassword(passwordArray.length);
